@@ -693,7 +693,7 @@
                     //console.log($("#bodyPage").children().length);
                     //console.log($("#bodyPage").children());
                     for (var i = 0; i < 1; i++) {
--
+
                         //$("#page-container").children().eq(i).find("#nameInput").html(grid.getValue(i, "name"));
                         //$("#page-container").children().eq(i).find("#nameInputsecond").html(grid.getValue(i, "name"));
                         /*$("#bodyPage").children().eq(i).find("#dutyInput").html(grid.getValue(i, "duty"));
@@ -703,12 +703,16 @@
                         $("#bodyPage").children().eq(i).find("#payInput").html(grid.getValue(i, "pay")+"원");
                         $("#bodyPage").children().eq(i).find("#transportInput").html(grid.getValue(i, "transport")+"원"); 
                         $("#bodyPage").children().eq(i).find("#eventInput").html("'"+grid.getValue(i, "event")+"'"+" 전문가 활용 수당 지급");       */
+
+
+
                     }
                 });
+
+
             }
             $("#pf1").last().remove();
-              //var tempgrid=opener.document.getElementById("gridDate").value;
-            //console.log(tempgrid);
+              var tempgrid=opener.document.getElementById("gridDate").value;
             
         }
         
