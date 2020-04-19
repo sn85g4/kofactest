@@ -665,9 +665,9 @@
     <script>
         $(document).ready(function() {
                          
+           
+            
             makeNamecard();
-            console.log(document.getElementById("gridDate").value);
-
             $("button").click(function() {
                 $("p").clone().appendTo("body");
             });
@@ -675,8 +675,8 @@
 
         function makeNamecard() {
             //            console.log("makeNameCard 진입");
-            
-           
+             
+           console.log(document.getElementById("gridDate").value);
             var cln = [];
             var itm = document.getElementById("pf1");
             console.log("itm값 : " + itm);
@@ -703,18 +703,15 @@
                         $("#bodyPage").children().eq(i).find("#payInput").html(grid.getValue(i, "pay")+"원");
                         $("#bodyPage").children().eq(i).find("#transportInput").html(grid.getValue(i, "transport")+"원"); 
                         $("#bodyPage").children().eq(i).find("#eventInput").html("'"+grid.getValue(i, "event")+"'"+" 전문가 활용 수당 지급");       */
-
-
-
                     }
                 });
-
-
             }
             $("#pf1").last().remove();
               var tempgrid=opener.document.getElementById("gridDate").value;
+            console.log(tempgrid);
             
         }
+        
 
         /*
          Copyright 2012 Mozilla Foundation 
