@@ -158,18 +158,29 @@
             output.innerHTML = this.value;
         }
 
-        function content_print() {
-
-            var initBody = document.body.innerHTML;
-            window.onbeforeprint = function() {
-                document.body.innerHTML = document.getElementById('bodyPage').innerHTML;
-            }
-            window.onafterprint = function() {
-                document.body.innerHTML = initBody;
-            }
-            window.print();
-        }
-
+//        function content_print() {
+//
+//            var initBody = document.body.innerHTML;
+//            window.onbeforeprint = function() {
+//                document.body.innerHTML = document.getElementById('bodyPage').innerHTML;
+//            }
+//            window.onafterprint = function() {
+//                document.body.innerHTML = initBody;
+//            }
+//            window.print();
+//        }
+        
+          function makeNamecard() {
+               
+            var temp=grid.getData();
+             document.getElementById("gridDate").value=temp;
+               console.log( document.getElementById("gridDate").value);  
+              
+            var popupWindow_makeNamecard = window.open("namecard3.html", "namecard");
+            popupWindow_makeNamecard.document.getElementById("gridDate").value = temp;
+           
+             
+          }
 
         function makePrivacyDocu() {
             $("#bodyPage").empty();
@@ -179,11 +190,13 @@
             console.log(grid.getRowCount() + "개의 로우임.");
 
             var itm = document.getElementById("privacyDocuSample");
+             console.log("itm 값 : "+itm);
             //$("#hiddenDiv").empty();
 
 
             for (var i = 0; i < grid.getRowCount(); i++) {
                 cln[i] = itm.cloneNode(true);
+                console.log("cln[i] 값 : "+cln[i]);
                 //               cln[i].innerHTML = "<div id='privacyDocuSample' class='privacyDocuSampleClass" + i + "'>" + "</div>";
                 document.getElementById("bodyPage").appendChild(cln[i]);
 
@@ -202,7 +215,9 @@
                         $("#bodyPage").children().eq(i).find("#dateInput").html(grid.getValue(i, "date"));
                         $("#bodyPage").children().eq(i).find("#paysumInput").html(grid.getValue(i, "paysum")+"원");
                         $("#bodyPage").children().eq(i).find("#payInput").html(grid.getValue(i, "pay")+"원");
-                        $("#bodyPage").children().eq(i).find("#transportInput").html(grid.getValue(i, "transport")+"원");                        
+                        $("#bodyPage").children().eq(i).find("#transportInput").html(grid.getValue(i, "transport")+"원"); 
+                        $("#bodyPage").children().eq(i).find("#eventInput").html("'"+grid.getValue(i, "event")+"'"+" 전문가 활용 수당 지급");                        
+                    
                     }
 
                 });
@@ -433,6 +448,7 @@
 
     </div>
     <div id=hiddenDiv>
+        <div id=gridDate></div>
         <div id=privacyDocuSample class=privacyDocuSampleClass>
             <div class="hpa" style="width:210mm;height:297mm;">
                 <div class="hcD" style="left:20mm;top:24.99mm;">
@@ -606,7 +622,7 @@
                                 <div class="hce" style="left:43.24mm;top:68.95mm;width:124.76mm;height:10.75mm;">
                                     <div class="hcD" style="left:1.80mm;top:0.50mm;">
                                         <div class="hcI" style="top:3.11mm;">
-                                            <div class="hls ps19" style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:121.16mm;">
+                                            <div class="hls ps25" style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:121.16mm;">
                                                 <span class="hrt cs8" id="paysumInput">총 금액 넣는 곳</span>
                                             </div>
                                         </div>
@@ -668,7 +684,9 @@
                                 <div class="hce" style="left:43.24mm;top:90.56mm;width:124.76mm;height:14.06mm;">
                                     <div class="hcD" style="left:1.80mm;top:0.50mm;">
                                         <div class="hcI" style="top:4.77mm;">
-                                            <div class="hls ps26" style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:121.16mm;"></div>
+                                            <div class="hls ps26" style="line-height:2.79mm;white-space:nowrap;left:0mm;top:-0.18mm;height:3.53mm;width:121.16mm;">
+                                                 <span class="hrt cs8" id="eventInput">목적</span>    
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -765,7 +783,7 @@
                 </div>
             </article>
             <article>
-                <a onclick="openWindow()" class="image">
+                <a onclick="makeNamecard()" class="image">
                     <img src="images/gallery/thumbs/02.jpg" alt="" />
                 </a>
                 <div class="caption">
@@ -777,7 +795,7 @@
                 </div>
             </article>
             <article>
-                <a href="images/gallery/fulls/03.jpg" class="image">
+                <a onclick="makeNamecard()" class="image">
                     <img src="images/gallery/thumbs/03.jpg" alt="" />
                 </a>
                 <div class="caption">
